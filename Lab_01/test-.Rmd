@@ -1,0 +1,20 @@
+---
+title: "Test"
+output:
+  pdf_document: default
+  html_document: default
+date: "2025-01-13"
+---
+
+
+
+```{r}
+BirdMove <- read.csv('BirdMove.csv')
+
+```
+
+
+```{r}
+bird1 <- BirdMove$V2
+```
+

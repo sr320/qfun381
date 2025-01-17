@@ -1,0 +1,88 @@
+---
+title: "Assignment_01"
+output: html_document
+date: "2025-01-15"
+---
+
+```{r}
+BirdMove <- read.csv("http://gannet.fish.washington.edu/seashell/snaps/BirdMove.csv")
+```
+```{r}
+GPS22 <- read.csv("http://gannet.fish.washington.edu/seashell/snaps/GPS.csv")
+```
+
+Question 2
+In this question we will create a line graph of the distances travelled by the birds through time.
+Firstly, the date column in our data isn’t formatted as a date (by default R reads in strings of text as just
+that, a string of text). However, we can re-format those strings as a date using the as.Date() function by
+following the commands below
+# The following code converts the date column to a date class
+# The format argument tells R how to interpret the string of txt
+BirdMove$date <- as.Date(BirdMove$date, format="%d/%m/%Y")
+
+
+```{r}
+BirdMove$date <- as.Date(BirdMove$date, format="%d/%m/%Y")
+```
+
+
+
+```{r}
+# Initial plot for the first bird
+plot(BirdMove$BirdID_2, 
+     xlab = "Date", 
+     ylab = "Daily travel distance (km)", 
+     main = "Bird 2 travel distance (km) from March 2019-August 2019", 
+     ylim = c(0, 250), 
+     lwd = 2, 
+     type = "l")
+
+# Add a second line for another bird (e.g., BirdID_3)
+lines(BirdMove$BirdID_3, 
+      col = "red", # Choose a different color for distinction
+      lwd = 2, 
+      type = "l") # Same line type
+```
+
+
+
+
+
+
+Copy this code above into your R session and make sure that the dates look correct (they should appear
+as YYY-MM-DD).
+2a) Create a line graph of travel distances through time for bird ID_2, plotting daily travel distance
+against date.
+When creating the plot add the following plot attributes by specifying the necessary arguments in the
+plot function (for more help with the plot function type ?plot in R):
+● The default plot type in R is a scatterplot, we want a line graph instead. To do this, use the
+type="l" option.
+● Label the x axis, using the xlab argument, “Date”
+● Label the y axis, using the ylab argument, “Daily travel distance (km)”
+● Change the y-axis range using the ylim argument so that the axis ranges from 0 to 250
+● Add a plot title using the main argument. Set the plot title to be a brief description of the
+information plotted followed by your name in parentheses
+● Change the line width using the lwd function to 2
+Take a screenshot of your graph and paste it below (6 pts)
+2b) Now overlap the distances travelled by Bird ID_3 onto this figure using the lines() function, changing
+the color of the Bird ID_3 line to distinguish it from Bird ID_2, but keeping the same linewidth as before.
+Once the 2nd line is added, add a legend to tell the viewer which line belongs to which bird using the
+legend() function. (4 points)
+2c) Comparing the distances travelled, provide a brief description of any major differences you see
+between the two patterns through time (2 pts)
+
+
+
+
+
+
+
+```{r}
+# Create a histogram with labeled x and y axes
+hist(GPS$HDOP, 
+     main = "Histogram of HDOP Values",  # Add a title
+     xlab = "HDOP",                     # Label for the x-axis
+     ylab = "Frequency")                # Label for the y-axis
+
+```
+
