@@ -1,22 +1,39 @@
 ---
-title: "Laboratory 2 Skills -- KEY"
+title: "Laboratory 2 Skills"
 date: "`r Sys.Date()`"
 output: pdf_document
+author: Steven Roberts
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 # Exercise 1
 
-Sperm whales (Physeter macrocephalus) are among the deepest ocean divers among mammals. A team of marine mammal researchers attached time-depth recorders to sperm whales in the Pacific and Atlantic oceans to record individual diving depth for dives lasting longer than 30 minutes. The results of the study are presented below, showing dive depth in meters. 
+Sperm whales (Physeter macrocephalus) are among the deepest ocean divers
+among mammals. A team of marine mammal researchers attached time-depth
+recorders to sperm whales in the Pacific and Atlantic oceans to record
+individual diving depth for dives lasting longer than 30 minutes. The
+results of the study are presented below, showing dive depth in meters.
 
-Pacific sperm whales:
-420, 729, 442, 529, 484, 720, 453, 1002, 561, 980, 806, 263, 897, 652, 575, 346, 794, 553, 410, 417, 830, 1050, 1196, 687, 629, 1125, 496, 674, 998, 62, 735, 628, 1082, 1014, 732, 474, 111, 716, 567, 646, 286, 531, 550, 1346, 1401, 949, 644, 787, 929, 756, 763, 1035, 631, 1235, 395, 302, 804, 388, 574, 568, 491, 1389, 1125
+Pacific sperm whales: 420, 729, 442, 529, 484, 720, 453, 1002, 561, 980,
+806, 263, 897, 652, 575, 346, 794, 553, 410, 417, 830, 1050, 1196, 687,
+629, 1125, 496, 674, 998, 62, 735, 628, 1082, 1014, 732, 474, 111, 716,
+567, 646, 286, 531, 550, 1346, 1401, 949, 644, 787, 929, 756, 763, 1035,
+631, 1235, 395, 302, 804, 388, 574, 568, 491, 1389, 1125
 
-Atlantic sperm whales:
-614, 283, 415, 756, 288, 435, 473, 487, 512, 552, 795, 544, 472, 731, 290, 772, 674, 387, 670, 271, 648, 323, 344, 399, 812, 616, 396, 598, 1082, 594, 363, 332, 457, 456, 125, 566, 884, 801, 567, 442, 722, 374, 485, 370, 343, 658, 425, 429, 901, 489, 480, 431, 608, 576, 348, 331, 432, 538
+Atlantic sperm whales: 614, 283, 415, 756, 288, 435, 473, 487, 512, 552,
+795, 544, 472, 731, 290, 772, 674, 387, 670, 271, 648, 323, 344, 399,
+812, 616, 396, 598, 1082, 594, 363, 332, 457, 456, 125, 566, 884, 801,
+567, 442, 722, 374, 485, 370, 343, 658, 425, 429, 901, 489, 480, 431,
+608, 576, 348, 331, 432, 538
 
-Copy and paste each dataset into R. Don’t forget to define the datasets with a name using the c() function, and remember: capitalization, spacing, and parentheses are important when using datasets and functions in R!  
+Copy and paste each dataset into R. Don’t forget to define the datasets
+with a name using the c() function, and remember: capitalization,
+spacing, and parentheses are important when using datasets and functions
+in R!
 
-## 1. Use R to estimate the maximum, minimum, mean, median, variance, and standard deviation for each dataset using the max(), min(), mean(), median(), var(), and sd() functions. 
+## 1. Use R to estimate the maximum, minimum, mean, median, variance, and standard deviation for each dataset using the max(), min(), mean(), median(), var(), and sd() functions.
 
 ```{r}
 pacific_sperm_whales <- c(420, 729, 442, 529, 484, 720, 453, 1002, 561, 980, 806, 263, 897, 
@@ -31,157 +48,403 @@ atlantic_sperm_whales <- c(614, 283, 415, 756, 288, 435, 473, 487, 512, 552, 795
                            616, 396, 598, 1082, 594, 363, 332, 457, 456, 125, 566, 884, 
                            801, 567, 442, 722, 374, 485, 370, 343, 658, 425, 429, 901, 
                            489, 480, 431, 608, 576, 348, 331, 432, 538)
-```
 
-Your final answer here
+
+pacific_max <- max(pacific_sperm_whales)
+pacific_min <- min(pacific_sperm_whales)
+pacific_mean <- mean(pacific_sperm_whales)
+pacific_median <- median(pacific_sperm_whales)
+pacific_variance <- var(pacific_sperm_whales)
+pacific_sd <- sd(pacific_sperm_whales)
+
+
+atlantic_max <- max(atlantic_sperm_whales)
+atlantic_min <- min(atlantic_sperm_whales)
+atlantic_mean <- mean(atlantic_sperm_whales)
+atlantic_median <- median(atlantic_sperm_whales)
+atlantic_variance <- var(atlantic_sperm_whales)
+atlantic_sd <- sd(atlantic_sperm_whales)
+
+# Create a data frame for the statistics
+whale_statistics <- data.frame(
+  Statistic = c("Maximum", "Minimum", "Mean", "Median", "Variance", "Standard Deviation"),
+  Pacific = c(
+    max(pacific_sperm_whales),
+    min(pacific_sperm_whales),
+    mean(pacific_sperm_whales),
+    median(pacific_sperm_whales),
+    var(pacific_sperm_whales),
+    sd(pacific_sperm_whales)
+  ),
+  Atlantic = c(
+    max(atlantic_sperm_whales),
+    min(atlantic_sperm_whales),
+    mean(atlantic_sperm_whales),
+    median(atlantic_sperm_whales),
+    var(atlantic_sperm_whales),
+    sd(atlantic_sperm_whales)
+  )
+)
+
+# Display the data frame
+whale_statistics
+
+```
 
 ## 2. Calculate the range for each dataset.
 
 ```{r}
-# Your code here
+
+pacific_range <- max(pacific_sperm_whales) - min(pacific_sperm_whales)
+atlantic_range <- max(atlantic_sperm_whales) - min(atlantic_sperm_whales)
+
+
+data.frame(
+  Dataset = c("Pacific Sperm Whales", "Atlantic Sperm Whales"),
+  Range = c(pacific_range, atlantic_range)
+)
 ```
 
-Your final answer here
-
-## 3. Calculate the coefficient of variation for each dataset, and then interpret the results. 
+## 3. Calculate the coefficient of variation for each dataset, and then interpret the results.
 
 ```{r}
-# Your code here
+
+pacific_cv <- (sd(pacific_sperm_whales) / mean(pacific_sperm_whales)) * 100
+atlantic_cv <- (sd(atlantic_sperm_whales) / mean(atlantic_sperm_whales)) * 100
+
+
+cv_results <- data.frame(
+  Dataset = c("Pacific Sperm Whales", "Atlantic Sperm Whales"),
+  Coefficient_of_Variation = c(pacific_cv, atlantic_cv)
+)
+
+cv_results
 ```
 
-Your final answer here
+-   The coefficient of variation (CV) is a measure of relative
+    variability. It expresses the standard deviation as a percentage of
+    the mean, allowing you to compare the variability of datasets
+    regardless of their scale.
+
+-   A higher CV indicates greater relative variability, while a lower CV
+    suggests the data is more consistent relative to the mean.
+
+-   Compare the CV values of the Pacific and Atlantic sperm whale
+    datasets to see which has more relative variability in its values.
+    For example:\
+    If the Pacific dataset has a higher CV, it suggests greater
+    variability in the Pacific sperm whale data relative to its mean.\
+    If the Atlantic dataset has a higher CV, it suggests the same for
+    the Atlantic sperm whale data.
 
 ## 4. Assume that the data from both datasets are normally distributed. Compute the extent of diving depths (i.e., from x to y meters) that correspond to approximately 95% of the diving depths for each dataset. Remember, this is the empirical rule.
 
 ```{r}
-# Your code here
+# Compute 95% diving depth range for Pacific sperm whales
+pacific_mean <- mean(pacific_sperm_whales)
+pacific_sd <- sd(pacific_sperm_whales)
+pacific_lower <- pacific_mean - 2 * pacific_sd
+pacific_upper <- pacific_mean + 2 * pacific_sd
+
+# Compute 95% diving depth range for Atlantic sperm whales
+atlantic_mean <- mean(atlantic_sperm_whales)
+atlantic_sd <- sd(atlantic_sperm_whales)
+atlantic_lower <- atlantic_mean - 2 * atlantic_sd
+atlantic_upper <- atlantic_mean + 2 * atlantic_sd
+
+# Display results
+depth_range <- data.frame(
+  Dataset = c("Pacific Sperm Whales", "Atlantic Sperm Whales"),
+  Lower_Bound = c(pacific_lower, atlantic_lower),
+  Upper_Bound = c(pacific_upper, atlantic_upper)
+)
+
+depth_range
 ```
 
-Your final answer here
+Interpretation of 95% Diving Depths
+
+Assuming the diving depths of both Pacific and Atlantic sperm whales are normally distributed, we used the empirical rule to estimate the range within which 95% of the diving depths fall. This rule states that:
+
+
+\[
+\text{Range for 95\%} = \text{Mean} \pm 2 \times \text{Standard Deviation}
+\]
+
+For each dataset:    
+	•	Pacific Sperm Whales:    
+	•	The diving depths from the lower bound to the upper bound encompass approximately 95% of the dives.    
+	•	Dives outside this range are considered uncommon, representing the extremes (2.5% on each tail) of the normal distribution.   
+	•	Atlantic Sperm Whales:    
+	•	Similarly, the diving depths from the calculated lower bound to upper bound represent 95% of the dives.   
+	•	Any dives outside this range are rare and represent outlier events.
+
+
+
+
 
 ## 5. Calculate the lower (Q1), and upper (Q3) quartiles of the distribution for each dataset. You can do this by using the quantile() command.
 
 ```{r}
-# Your code here
+# Calculate quartiles for Pacific sperm whales
+pacific_quartiles <- quantile(pacific_sperm_whales, probs = c(0.25, 0.75))
+
+# Calculate quartiles for Atlantic sperm whales
+atlantic_quartiles <- quantile(atlantic_sperm_whales, probs = c(0.25, 0.75))
+
+# Create a data frame to display the results
+quartile_results <- data.frame(
+  Dataset = c("Pacific Sperm Whales", "Atlantic Sperm Whales"),
+  Q1 = c(pacific_quartiles[1], atlantic_quartiles[1]),
+  Q3 = c(pacific_quartiles[2], atlantic_quartiles[2])
+)
+
+quartile_results
 ```
 
-Your final answer here
 
 ## 6. Calculate the interquartile range (IQR) for each dataset.
 
 ```{r}
-# Your code here
+# Calculate the IQR for Pacific sperm whales
+pacific_iqr <- IQR(pacific_sperm_whales)
+
+# Calculate the IQR for Atlantic sperm whales
+atlantic_iqr <- IQR(atlantic_sperm_whales)
+
+# Create a data frame to display the results
+iqr_results <- data.frame(
+  Dataset = c("Pacific Sperm Whales", "Atlantic Sperm Whales"),
+  IQR = c(pacific_iqr, atlantic_iqr)
+)
+
+iqr_results
 ```
 
-Your final answer here
+
 
 ## 7. Now compute the dive depth at the 95th and 5th percentile for each dataset. Note: The empirical rule tells us something subtly different from percentiles. Use quantile(data, probs = c(.05,.95)) to calculate percentiles. Note that we can also use this function to compute deciles.
 
 ```{r}
-# Your code here
+# Calculate the 5th and 95th percentiles for Pacific sperm whales
+pacific_percentiles <- quantile(pacific_sperm_whales, probs = c(0.05, 0.95))
+
+# Calculate the 5th and 95th percentiles for Atlantic sperm whales
+atlantic_percentiles <- quantile(atlantic_sperm_whales, probs = c(0.05, 0.95))
+
+# Create a data frame to display the results
+percentile_results <- data.frame(
+  Dataset = c("Pacific Sperm Whales", "Atlantic Sperm Whales"),
+  P5 = c(pacific_percentiles[1], atlantic_percentiles[1]),
+  P95 = c(pacific_percentiles[2], atlantic_percentiles[2])
+)
+
+percentile_results
 ```
 
-Your final answer here
 
-## 8. Calculate the z-scores for a Pacific sperm whale that dove to a depth of 949 meters and an Atlantic sperm whale that dove to 538 meters, and then compare the results. 
+
+## 8. Calculate the z-scores for a Pacific sperm whale that dove to a depth of 949 meters and an Atlantic sperm whale that dove to 538 meters, and then compare the results.
 
 ```{r}
-# Your code here
+# Calculate mean and standard deviation for both datasets
+pacific_mean <- mean(pacific_sperm_whales)
+pacific_sd <- sd(pacific_sperm_whales)
+
+atlantic_mean <- mean(atlantic_sperm_whales)
+atlantic_sd <- sd(atlantic_sperm_whales)
+
+# Calculate z-scores
+pacific_z <- (949 - pacific_mean) / pacific_sd
+atlantic_z <- (538 - atlantic_mean) / atlantic_sd
+
+# Create a data frame to display the results
+z_score_results <- data.frame(
+  Dataset = c("Pacific Sperm Whale", "Atlantic Sperm Whale"),
+  Depth = c(949, 538),
+  Z_Score = c(pacific_z, atlantic_z)
+)
+
+z_score_results
 ```
 
-Your final answer here
+
 
 ## 9. Determine if there are any outliers. In this case we want to look for z-scores less than -3 or greater than 3. Report the z-score as well as the depth associate with that z-score for any outliers.
 
 ```{r}
-# Your code here
+# Calculate z-scores for Pacific sperm whales
+pacific_z_scores <- (pacific_sperm_whales - pacific_mean) / pacific_sd
+
+# Identify outliers in the Pacific dataset
+pacific_outliers <- pacific_sperm_whales[abs(pacific_z_scores) > 3]
+pacific_outlier_z_scores <- pacific_z_scores[abs(pacific_z_scores) > 3]
+
+# Calculate z-scores for Atlantic sperm whales
+atlantic_z_scores <- (atlantic_sperm_whales - atlantic_mean) / atlantic_sd
+
+# Identify outliers in the Atlantic dataset
+atlantic_outliers <- atlantic_sperm_whales[abs(atlantic_z_scores) > 3]
+atlantic_outlier_z_scores <- atlantic_z_scores[abs(atlantic_z_scores) > 3]
+
+# Combine results into a data frame
+outlier_results <- data.frame(
+  Dataset = c(
+    rep("Pacific Sperm Whales", length(pacific_outliers)),
+    rep("Atlantic Sperm Whales", length(atlantic_outliers))
+  ),
+  Depth = c(pacific_outliers, atlantic_outliers),
+  Z_Score = c(pacific_outlier_z_scores, atlantic_outlier_z_scores)
+)
+
+outlier_results
 ```
 
-Your final answer here
+
 
 ## 10. Use the boxplot() command to create a box-whisker plot for both the Atlantic and Pacific sperm whale data side-by-side and copy and paste it below. Hint: The names argument in the plot() function lets you label the x-axis ticks.
 
 ```{r}
-# Your code here
+# Create a side-by-side box-whisker plot
+boxplot(
+  pacific_sperm_whales, atlantic_sperm_whales,
+  names = c("Pacific Sperm Whales", "Atlantic Sperm Whales"),
+  main = "Boxplot of Diving Depths",
+  ylab = "Diving Depth (meters)",
+  col = c("lightblue", "lightgreen") # Optional colors for the boxplots
+)
 ```
 
-Your final answer here
 
 # Exercise 2
 
-The gender and age of students from a past QSCI381 class were surveyed. The results of this survey can be found in the “lab2data.csv” file. REMEMBER: capitalization, spacing, and parentheses are important when using datasets and functions in R! 
+The gender and age of students from a past QSCI381 class were surveyed.
+The results of this survey can be found in the “lab2data.csv” file.
+REMEMBER: capitalization, spacing, and parentheses are important when
+using datasets and functions in R!
 
-Include all code for each question, plus output from R or graphs, and answer all sub-questions. 
+Include all code for each question, plus output from R or graphs, and
+answer all sub-questions.
 
 ## 1. Read in the “lab2data.csv” file using the read.csv() command and name it data. Look at the first six rows of data.
 
 ```{r}
-# Your code here
+lab2data <- read.csv("http://gannet.fish.washington.edu/seashell/snaps/lab2data.csv")
+
+lab2data
 ```
 
-Your final answer here
 
-## 2. Change the Age column values of data from numeric to character (“under21” , “over21”) values using the ifelse() function.  data$AgeFactor<- ifelse(data$AgeFactor < 21, "under21", "over21")
+
+## 2. Change the Age column values of data from numeric to character (“under21” , “over21”) values using the ifelse() function. data$AgeFactor<- ifelse(data$AgeFactor \< 21, "under21", "over21")
 
 ```{r}
-# Your code here
+# Add the AgeFactor column
+lab2data$AgeFactor <- ifelse(lab2data$Age < 21, "under21", "over21")
+
+# Display the updated dataset
+head(lab2data)
 ```
 
-Your final answer here
 
 ## 3. Create a contingency table for Gender and Age from data and name it conting. Add the row and column totals to complete the contingency table.
 
 ```{r}
-# Your code here
+# Create a contingency table for Gender and Age
+conting <- table(lab2data$Gender, lab2data$Age)
+
+# Add row and column totals to the contingency table
+conting_with_totals <- addmargins(conting)
+
+# Display the contingency table with totals
+print(conting_with_totals)
 ```
 
-Your final answer here
 
 ## 4. What is the probability of being female? Of being female and over 21? Of being female OR over 21?
-	
+
 ### a) P(Female)
 
 ```{r}
-# Your code here
+# Total number of females
+num_females <- sum(lab2data$Gender == "Female")
+
+# Total number of individuals
+total_individuals <- nrow(lab2data)
+
+# Probability of being female
+P_Female <- num_females / total_individuals
+print(P_Female)
 ```
 
-Your final answer here
+
 
 ### b) P(Female AND over21)
 
 ```{r}
-# Your code here
+# Number of females over 21
+num_female_over21 <- sum(lab2data$Gender == "Female" & lab2data$Age > 21)
+
+# Probability of being female and over 21
+P_Female_Over21 <- num_female_over21 / total_individuals
+print(P_Female_Over21)
 ```
 
-Your final answer here
+
 
 ### c) P(Female OR over21)
 
 ```{r}
-# Your code here
+# Total number of individuals over 21
+num_over21 <- sum(lab2data$Age > 21)
+
+# Probability of being over 21
+P_Over21 <- num_over21 / total_individuals
+
+# Probability of being female OR over 21
+P_Female_Or_Over21 <- P_Female + P_Over21 - P_Female_Over21
+print(P_Female_Or_Over21)
 ```
 
-Your final answer here
 
-## 5. What is the probability of being male given one is over 21? What is the probability of being male given one is not over 21?  Why do these two probabilities not sum to one?
 
-### a) P(Male|over21)
+## 5. What is the probability of being male given one is over 21? What is the probability of being male given one is not over 21? Why do these two probabilities not sum to one?
+
+### a) P(Male\|over21)
 
 ```{r}
-# Your code here
+# Count males over 21
+num_male_over21 <- sum(lab2data$Gender == "Male" & lab2data$Age > 21)
+
+# Count total individuals over 21
+num_over21 <- sum(lab2data$Age > 21)
+
+# Probability of being male given over 21
+P_Male_Given_Over21 <- num_male_over21 / num_over21
+print(P_Male_Given_Over21)
 ```
 
-Your final answer here
 
-### b) P(Male|under21)
+### b) P(Male\|under21)
 
 ```{r}
-# Your code here
+# Count males not over 21
+num_male_not_over21 <- sum(lab2data$Gender == "Male" & lab2data$Age <= 21)
+
+# Count total individuals not over 21
+num_not_over21 <- sum(lab2data$Age <= 21)
+
+# Probability of being male given not over 21
+P_Male_Given_NotOver21 <- num_male_not_over21 / num_not_over21
+print(P_Male_Given_NotOver21)
 ```
 
-Your final answer here
 
 ### c) Why do these two probabilities not sum to one?
 
-Your final answer here
 
+The probabilities P(\text{Male | Over 21}) and P(\text{Male | Not Over 21}) represent conditional probabilities, and they are calculated with respect to different subsets of the population.
+	•	P(\text{Male | Over 21}) only considers individuals over 21.
+	•	P(\text{Male | Not Over 21}) only considers individuals not over 21.
+
+The denominators are different because they represent different subsets of the data. As such, these two probabilities are not complementary and do not sum to 1.
